@@ -18,7 +18,25 @@ A clean and modern **Pomodoro Chrome Extension** designed to help you stay produ
 
 ---
 
-## 🚀 Installation
+## 📁 Project Structure
+```bash
+Pomodoro-Timer-Extension/
+│── manifest.json
+│── popup.html
+│── popup.js
+│── background.js
+│── styles.css
+```
+---
+
+## 🛠️ Tech Stack
+- JavaScript
+- Chrome Extension API (Manifest V3)
+- HTML & CSS
+
+---
+
+## ⚙️ Installation
 
 ### 1. Clone Repository
 ```bash
@@ -34,15 +52,12 @@ git clone https://github.com/itsmethahara/Pomodoro-Timer-Extension.git
 
 ---
 
-## 📁 Project Structure
-```bash
-Pomodoro-Timer-Extension/
-│── manifest.json
-│── popup.html
-│── popup.js
-│── background.js
-│── styles.css
-```
+## 💡 Future Improvements
+- Custom timer duration
+- Sound / music support
+- Task manager integration
+- Analytics dashboard
+- Sync across devices
 
 ---
 

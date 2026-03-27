@@ -4,6 +4,8 @@
 
 A clean and modern **Pomodoro Chrome Extension** designed to help you stay productive with a distraction-free experience. (It's project of GWH)
 
+---
+
 ## ✨ Features
 
 - ⏱️ **25 / 5 Pomodoro system**
@@ -13,6 +15,8 @@ A clean and modern **Pomodoro Chrome Extension** designed to help you stay produ
 - 💾 **Persistent timer (chrome.storage)**
 - ⚙️ **Background timer (works when popup is closed)**
 - 🌙 **Minimal dark UI**
+
+---
 
 ## 🚀 Installation
 
@@ -28,6 +32,8 @@ git clone https://github.com/itsmethahara/Pomodoro-Timer-Extension.git
 
 ✅ Done! Your extension is ready to use.
 
+---
+
 ## 📁 Project Structure
 ```bash
 Pomodoro-Timer-Extension/
@@ -38,9 +44,13 @@ Pomodoro-Timer-Extension/
 │── styles.css
 ```
 
+---
+
 ## 🤝 Contributing 
 
 Pull requests are welcome! Feel free to fork this project and improve it 🚀
+
+---
 
 ## 📄 License
 

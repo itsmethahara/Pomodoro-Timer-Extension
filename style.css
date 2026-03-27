@@ -1,0 +1,227 @@
+/* ================================
+   Pomodoro Focus Timer — style.css
+   ================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #0f0e17;
+  --bg2:         #1a1828;
+  --surface:     #231f35;
+  --accent:      #ff6b6b;
+  --accent2:     #ffa07a;
+  --text:        #fffffe;
+  --muted:       #a7a5b8;
+  --tab-active:  #ff6b6b;
+  --ring-full:   427px; /* 2π × 68 ≈ 427 */
+  --radius:      12px;
+  --font-mono:   'DM Mono', monospace;
+  --font-sans:   'DM Sans', sans-serif;
+}
+
+body {
+  width: 300px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  padding: 20px 20px 16px;
+  user-select: none;
+}
+
+/* ---- Header ---- */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.logo { font-size: 18px; }
+.app-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+/* ---- Mode Tabs ---- */
+.mode-tabs {
+  display: flex;
+  background: var(--bg2);
+  border-radius: var(--radius);
+  padding: 3px;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+.tab {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+.tab:not(.active):hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+/* ---- Timer Ring ---- */
+.timer-wrap {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 20px;
+}
+.ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.ring-bg {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 6;
+}
+.ring-progress {
+  fill: none;
+  stroke: url(#ringGradient);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 427;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+/* SVG gradient inline via filter trick */
+.ring-progress {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(255, 107, 107, 0.5));
+}
+
+.timer-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.time-display {
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1;
+}
+.session-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
+
+/* ---- Controls ---- */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.btn-main {
+  padding: 10px 40px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.35);
+}
+.btn-main:hover {
+  background: #ff5252;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+}
+.btn-main:active { transform: translateY(0); }
+.btn-main.paused { background: var(--surface); box-shadow: none; }
+.btn-main.paused:hover { background: var(--accent); box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5); }
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--surface);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.btn-icon:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255, 107, 107, 0.08);
+}
+
+/* ---- Session Dots ---- */
+.session-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 4px;
+  border-top: 1px solid var(--surface);
+}
+.dots-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.dots {
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--muted);
+  transition: background 0.3s, border-color 0.3s;
+}
+.dot.filled {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.5);
+}
+
+/* ---- Finished state ---- */
+.time-display.done {
+  color: var(--accent);
+  animation: pulse 0.8s ease-in-out 3;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}

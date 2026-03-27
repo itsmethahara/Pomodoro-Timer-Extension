@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Focus Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">🍅</div>
+      <span class="app-title">pomodoro</span>
+    </div>
+
+    <!-- Mode Tabs -->
+    <div class="mode-tabs">
+      <button class="tab active" data-mode="focus" data-minutes="25">Focus</button>
+      <button class="tab" data-mode="short" data-minutes="5">Short Break</button>
+      <button class="tab" data-mode="long" data-minutes="15">Long Break</button>
+    </div>
+
+    <!-- Timer Ring -->
+    <div class="timer-wrap">
+      <svg class="ring" viewBox="0 0 160 160">
+        <circle class="ring-bg" cx="80" cy="80" r="68"/>
+        <circle class="ring-progress" id="ring" cx="80" cy="80" r="68"/>
+      </svg>
+      <div class="timer-inner">
+        <div class="time-display" id="timeDisplay">25:00</div>
+        <div class="session-label" id="sessionLabel">Focus Time</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn-icon" id="resetBtn" title="Reset">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+        </svg>
+      </button>
+
+      <button class="btn-main" id="startBtn">Start</button>
+
+      <button class="btn-icon" id="skipBtn" title="Skip">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 4 15 12 5 20 5 4"/>
+          <line x1="19" y1="5" x2="19" y2="19"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Session Counter -->
+    <div class="session-dots">
+      <div class="dots-label">Sessions today</div>
+      <div class="dots" id="sessionDots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
